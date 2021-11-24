@@ -21,8 +21,8 @@
 | `　　└── services` (directory) | Contains mock server and API request handler. |
 | `　　　　└── mirage` (directory) | Contains server request controllers and server setup function. |
 | `　　　　    ├── routes` (directory) | Contains server routes handler. |
-| `　　　　    └── server.ts` (directory) | Contains server models and setupServer function. |
-| `　　　　└── api.ts` (directory) | Contains function to send API request to server. |
+| `　　　　    └── server.ts` | Contains server models and setupServer function. |
+| `　　　　└── api.ts` | Contains function to send API request to server. |
 | `　　├── store` (directory) | Contains store configuration. |
 | `　　├── utils` (directory) | Contains util. |
 | `　　├── App.tsx` | Parent App Component. |
