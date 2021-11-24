@@ -1,6 +1,6 @@
 # Diaries App With Redux-Toolkit, TypeScript, and Mirage
 
-## Live
+## [Live](https://codesandbox.io/s/diariesapp-redux-toolkit-oizi3?file=/src/index.css)
 <img src="https://scontent.fkhi2-3.fna.fbcdn.net/v/t39.30808-6/259514662_1063495301066140_1440434779906836908_n.jpg?_nc_cat=107&ccb=1-5&_nc_sid=730e14&_nc_ohc=e1-qYYzq0lIAX_-TUhI&_nc_ht=scontent.fkhi2-3.fna&oh=cd23f7cb59dae142742841fb5af84eab&oe=61A28F9E" />
 
 ## Feature
