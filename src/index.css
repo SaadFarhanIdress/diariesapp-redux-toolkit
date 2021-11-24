@@ -94,22 +94,6 @@ button:hover {
   animation: 0.3s ease-in-out forwards fadeIn;
 }
 
-.two-cols {
-  display: flex;
-  flex-wrap: wrap;
-  height: 100vh;
-}
-
-.two-cols .left {
-  border-right: 1px solid rgba(0, 0, 0, 0.1);
-  height: 100%;
-  overflow-y: scroll;
-}
-
-.two-cols .right {
-  overflow-y: auto;
-}
-
 .title {
   font-size: 14px;
   font-weight: bolder;

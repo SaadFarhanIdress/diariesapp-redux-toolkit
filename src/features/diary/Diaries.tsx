@@ -12,6 +12,7 @@ import { setUser } from '../auth/userSlice';
 import { Route, Routes } from 'react-router';
 import DiaryEntriesList from './DiaryEntriesList';
 import DiaryTile from './DiaryTile';
+import { Grid } from '@mui/material';
 
 const Diaries = () => {
 
@@ -86,9 +87,11 @@ const Diaries = () => {
     const DiariesContent = () => {
         return (<>
             <button onClick={createDiary}>Create New</button>
+            <Grid container spacing={3} style={{marginTop: -15}}>
             {diaries.map((diary, idx) => (
-                <DiaryTile key={idx} diary={diary} />
+                    <DiaryTile key={idx} diary={diary} />
             ))}
+            </Grid>
         </>);
     }
 

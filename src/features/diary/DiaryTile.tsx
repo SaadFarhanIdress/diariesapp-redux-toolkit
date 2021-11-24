@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import { Diary } from '../../interfaces/diary.interface';
 import http from '../../services/api';
-import { Grid, Box, Paper, Button } from '@mui/material';
+import { Grid, Paper, Button } from '@mui/material';
 import { useAppDispatch } from '../../store';
 import { showAlert } from '../../utils';
 import { setActiveDiaryId, setCanEdit, setCurrentlyEditing } from '../entry/editorSlice';
@@ -43,51 +43,47 @@ const DiaryTile: React.FC<Props> = ({ children, diary: _diary }) => {
     }
 
     return (
-        <Box sx={{ flexGrow: 1 }} style={{ marginTop: 20 }}>
-            <Grid container spacing={3}>
-                <Grid item xs={2}>
-                    <Paper className="diary-tile">
-                        <h4 className="date">{new Date(diary.createdAt!).toDateString()}</h4>
-                            <h2 className="title" title="Click to edit" onClick={() => isEditing(true)} style={{
-                                cursor: 'pointer',
+        <Grid item xs={2}>
+            <Paper className="diary-tile">
+                <h4 className="date">{new Date(diary.createdAt!).toDateString()}</h4>
+                <h2 className="title" title="Click to edit" onClick={() => isEditing(true)} style={{
+                    cursor: 'pointer',
+                }}
+                >
+                    {editing ? (
+                        <input value={diary.title} onChange={(e) => { setDiary({ ...diary, title: e.target.value, }); }}
+                            onKeyUp={(e) => {
+                                if (e.key === 'Enter') {
+                                    saveChanges();
+                                }
                             }}
-                            >
-                                {editing ? (
-                                    <input value={diary.title} onChange={(e) => { setDiary({ ...diary, title: e.target.value, }); }}
-                                        onKeyUp={(e) => {
-                                            if (e.key === 'Enter') {
-                                                saveChanges();
-                                            }
-                                        }}
-                                    />
-                                ) : (
-                                    <span>{diary.title} <br /> <span className="meta">({diary.type} Diary)</span></span>
-                                )}
-                            </h2>
-                            <p className="subtitle">{totalEntries ?? '0'} saved entries</p>
+                        />
+                    ) : (
+                        <span>{diary.title} <br /> <span className="meta">({diary.type} Diary)</span></span>
+                    )}
+                </h2>
+                <p className="subtitle">{totalEntries ?? '0'} saved entries</p>
 
-                        <div style={{ display: 'flex', marginTop: 10, justifyContent: "space-between" }}>
-                            <Button
-                                style={buttonStyle}
-                                onClick={() => {
-                                    dispatch(setCanEdit(true));
-                                    dispatch(setActiveDiaryId(diary.id as string));
-                                    dispatch(setCurrentlyEditing(null));
-                                    navigate('/editor')
-                                }}
-                            >
-                                Add Entry
-                            </Button>
-                            <Link to={`diary/${diary.id}`} style={{ width: '100%' }}>
-                                <Button style={buttonStyle}>
-                                    View all
-                                </Button>
-                            </Link>
-                        </div>
-                    </Paper>
-                </Grid>
-            </Grid>
-        </Box>
+                <div style={{ display: 'flex', marginTop: 10, justifyContent: "space-between" }}>
+                    <Button
+                        style={buttonStyle}
+                        onClick={() => {
+                            dispatch(setCanEdit(true));
+                            dispatch(setActiveDiaryId(diary.id as string));
+                            dispatch(setCurrentlyEditing(null));
+                            navigate('/editor')
+                        }}
+                    >
+                        Add Entry
+                    </Button>
+                    <Link to={`diary/${diary.id}`} style={{ width: '100%' }}>
+                        <Button style={buttonStyle}>
+                            View all
+                        </Button>
+                    </Link>
+                </div>
+            </Paper>
+        </Grid>
     );
 }
 
