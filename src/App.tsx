@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useSelector } from "react-redux";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { RootState } from "./features/rootReducer";
+import Auth from './features/auth/Auth';
+import Home from './features/home/Home'
+import DiaryEntriesList from './features/diary/DiaryEntriesList'
+import Editor from "./features/entry/editor";
 
-function App() {
+const App = () => {
+  const isLoggedIn = useSelector((state: RootState) => state.auth.isAuthenticated);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={isLoggedIn ? <Home /> : <Auth />} />
+        <Route path="/diary/:id" element={<DiaryEntriesList />} />
+        <Route path="/editor" element={<Editor />} />
+      </Routes>
+    </BrowserRouter>
+  )
 }
 
 export default App;
