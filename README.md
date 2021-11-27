@@ -19,9 +19,7 @@
 | `　　　　└── entry` (directory) | Contains the implementation of reset/start/pause timer. |
 | `　　├── interfaces` (directory) | Contains three interfaces. |
 | `　　└── services` (directory) | Contains mock server and API request handler. |
-| `　　　　└── mirage` (directory) | Contains server request controllers and server setup function. |
-| `　　　　    ├── routes` (directory) | Contains server routes handler. |
-| `　　　　    └── server.ts` | Contains server models and setupServer function. |
+| `　　　　├── mirage` (directory) | Contains server controllers and server setup function. |
 | `　　　　└── api.ts` | Contains function to send API request to server. |
 | `　　├── store` (directory) | Contains store configuration. |
 | `　　├── utils` (directory) | Contains util. |
